@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Moodli</title>
+    <style>
+        :root { 
+            --forest-green: #264B29; 
+            --pale-cream: #FFF9E1; 
+            --white: #ffffff; 
+            --text-muted: #4a4a4a;
+            --soft-barrier: #fff5f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--pale-cream); color: var(--forest-green); line-height: 1.6; overflow-x: hidden; }
+
+        header { 
+            padding: 20px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: var(--pale-cream); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1100; 
+        }
+        .logo img { height: 40px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--forest-green); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a.active { font-weight: bold; text-decoration: underline; }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1200; }
+        .hamburger span { display: block; width: 25px; height: 3px; background: var(--forest-green); border-radius: 3px; transition: 0.3s; }
+
+        /* Filter System Styles */
+        .filter-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 40px; 
+            flex-wrap: wrap;
+        }
+        .filter-btn { 
+            padding: 10px 22px; 
+            border: 2px solid var(--forest-green); 
+            background: transparent; 
+            color: var(--forest-green); 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover { 
+            background: var(--forest-green); 
+            color: var(--white); 
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 5% 20px; }
+        h1.page-title { margin-bottom: 20px; text-align: center; font-size: 2.5rem; }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .product-card { 
+            background: var(--white); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            text-align: left; 
+            transition: 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
+        }
+        
+        /* Animation for filtering */
+        .product-card.hidden { display: none; }
+        
+        .img-wrapper { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #f9f9f9; }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { padding: 20px; }
+        .product-info h3 { font-size: 1rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .commission-banner { 
+            background: var(--soft-barrier); 
+            margin: 60px 5%; 
+            padding: 60px 40px; 
+            border-radius: 30px; 
+            text-align: center; 
+        }
+        .btn-commission { 
+            background: var(--forest-green); 
+            color: white; 
+            text-decoration: none; 
+            padding: 15px 35px; 
+            border-radius: 10px; 
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold; 
+        }
+
+        footer { background: var(--forest-green); color: var(--pale-cream); padding: 40px 8% 20px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .footer-col a { color: var(--pale-cream); text-decoration: none; display: block; font-size: 0.8rem; opacity: 0.8; margin-bottom: 5px; }
+        .footer-bottom { margin-top: 30px; opacity: 0.4; font-size: 0.7rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+
+
+        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 850px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 70%;
+                background: var(--pale-cream); flex-direction: column;
+                justify-content: center; align-items: center; transition: 0.4s;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { right: 0; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo"><img src="https://i.postimg.cc/50mj2c5f/BA50E868-D8FC-4CA3-A4B8-D219ABAD0180-L0-001-11-15-2025-1-42-12-PM.jpg" alt="Moodli"></a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Our Collection</h1>
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Moods</button>
+            <button class="filter-btn" data-filter="animals">Animals</button>
+            <button class="filter-btn" data-filter="limited">Limited Edition</button>
+            <button class="filter-btn" data-filter="sets">Sets</button>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <div class="product-card" data-category="animals">
+                <div class="img-wrapper"><img src="https://i.imgur.com/GYWHG5g.jpg" alt="Chicks"></div>
+                <div class="product-info"><h3>Chicks</h3><p>Animals</p></div>
+            </div>
+            <div class="product-card" data-category="animals">
+                <div class="img-wrapper"><img src="https://i.imgur.com/qbZKqNa.jpg" alt="Pink Pig"></div>
+                <div class="product-info"><h3>Pink Pig</h3><p>Animals</p></div>
+            </div>
+            <div class="product-card" data-category="animals">
+                <div class="img-wrapper"><img src="https://i.imgur.com/K8xfDkq.jpg" alt="Frog"></div>
+                <div class="product-info"><h3>Frog</h3><p>Animals</p></div>
+            </div>
+
+            <div class="product-card" data-category="limited">
+                <div class="img-wrapper"><img src="https://i.imgur.com/q09Adkq.jpg" alt="Green Pig"></div>
+                <div class="product-info"><h3>Green Pig</h3><p>Limited Edition</p></div>
+            </div>
+            <div class="product-card" data-category="animals">
+                <div class="img-wrapper"><img src="https://i.imgur.com/9QoaB64.jpg" alt="Panda"></div>
+                <div class="product-info"><h3>Panda</h3><p>Animals</p></div>
+            </div>
+               <div class="product-card" data-category="limited">
+                <div class="img-wrapper"><img src="https://imgur.com/otHNG5h.jpg" alt="Bunny"></div>
+                <div class="product-info"><h3>Bunny</h3><p>Limited Edition</p></div>
+            </div>
+            <div class="product-card" data-category="animals">
+                <div class="img-wrapper"><img src="https://i.imgur.com/7L6By1F.jpg" alt="Capybara"></div>
+                <div class="product-info"><h3>Capybara</h3><p>Animals</p></div>
+            </div>
+            <div class="product-card" data-category="sets">
+                <div class="img-wrapper"><img src="https://i.imgur.com/UOXhL2W.jpg" alt="Small Cuties"></div>
+                <div class="product-info"><h3>Small Cuties</h3><p>Gift Sets</p></div>
+            </div>
+        </div>
+
+        <section class="commission-banner">
+            <h2>Looking for something unique?</h2>
+            <p>We accept custom commissions! We'll handcraft it just for you.</p>
+            <a href="contact.html" class="btn-commission">Request a Commission</a>
+        </section>
+    </main>
+
+  <footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>Moodli</h3>
+            <p>Handmade keychains celebrating self-expression.</p>
+        </div>
+        <div class="footer-col">
+            <h5>Get in Touch</h5>
+            <a href="mailto:moodlicore@gmail.com">moodlicore@gmail.com</a>
+            <p>0936-943-3099</p>
+        </div>
+        <div class="footer-col">
+            <h5>Connect</h5>
+            <a href="https://www.instagram.com/moodlicore/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61581735011163" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/@moodlicore?_r=1&_t=ZS-9323zbw775u" target="_blank">TikTok</a>
+        </div>
+        <div class="footer-col">
+            <h5>Legal</h5>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Transparency</a>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Moodli. All Rights Reserved.</div>
+</footer>
+    <script>
+        // MOBILE MENU
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const spans = hamburger.querySelectorAll('span');
+            spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 6px)' : 'none';
+            spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(5px, -6px)' : 'none';
+        });
+
+        // FILTER LOGIC
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and add to clicked one
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

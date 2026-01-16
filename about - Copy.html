@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Moodli</title>
+<style>
+:root { 
+    --forest-green: #264B29; 
+    --pale-cream: #FFF9E1; 
+    --white: #ffffff; 
+    --soft-barrier: #fff5f0; 
+    --journey-bg: #fdf5e6; 
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body { background-color: var(--pale-cream); color: var(--forest-green); line-height: 1.6; overflow-x: hidden; }
+
+/* Header */
+header { 
+    padding: 20px 5%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background: var(--pale-cream); 
+    position: sticky; 
+    top: 0; 
+    z-index: 1100; 
+}
+.logo img { height: 40px; }
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a { text-decoration: none; color: var(--forest-green); font-weight: 500; font-size: 0.9rem; }
+.nav-links a.active { font-weight: bold; text-decoration: underline; }
+
+/* Hamburger */
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1200; }
+.hamburger span { display: block; width: 25px; height: 3px; background: var(--forest-green); border-radius: 3px; transition: 0.3s; }
+
+/* Sections */
+.container { padding: 60px 8%; }
+.barrier-section { background: var(--soft-barrier); padding: 80px 8%; margin: 40px 0; border-radius: 40px; }
+.flex-row { display: flex; align-items: center; gap: 60px; max-width: 1100px; margin: 0 auto; }
+.flex-row img { width: 32%; border-radius: 25px; aspect-ratio: 1/1; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.flex-row div { flex: 1; }
+.flex-row h2 { font-size: 2.2rem; margin-bottom: 20px; }
+.flex-row.reverse { flex-direction: row-reverse; }
+
+/* Team */
+.team-section { padding: 80px 8%; text-align: center; }
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 40px auto 0; }
+.team-member { background: var(--white); padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+.team-member img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.team-member h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--forest-green); }
+.team-member p { font-size: 0.85rem; color: #666; font-style: italic; }
+
+/* Journey */
+.journey-section { background: var(--journey-bg); padding: 80px 8%; text-align: center; border-radius: 40px; margin: 40px 5%; }
+.journey-section h2 { font-size: 2.5rem; margin-bottom: 15px; }
+
+/* Footer */
+footer { background: var(--forest-green); color: var(--pale-cream); padding: 40px 8% 20px; margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 20px; max-width: 1100px; margin: 0 auto; }
+.footer-col a { color: var(--pale-cream); text-decoration: none; display: block; font-size: 0.8rem; opacity: 0.8; margin-bottom: 5px; }
+.footer-bottom { margin-top: 30px; opacity: 0.4; font-size: 0.7rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+
+/* Mobile */
+@media (max-width: 850px) { 
+    header { padding: 15px 8%; }
+    .hamburger { display: flex; }
+    .nav-links {
+        position: fixed; top: 0; right: -100%; height: 100vh; width: 70%;
+        background: var(--pale-cream); flex-direction: column; justify-content: center; align-items: center;
+        transition: 0.4s ease-in-out; box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+    .nav-links.active { right: 0; }
+    .flex-row { flex-direction: column !important; text-align: center; gap: 30px; } 
+    .flex-row img { width: 80%; max-width: 300px; } 
+    .flex-row h2 { font-size: 1.8rem; }
+    .team-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+
+<body>
+<header>
+    <a href="index.html" class="logo"><img src="https://i.postimg.cc/50mj2c5f/BA50E868-D8FC-4CA3-A4B8-D219ABAD0180-L0-001-11-15-2025-1-42-12-PM.jpg" alt="Moodli Logo"></a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</header>
+
+<main>
+<!-- Mission -->
+<section class="barrier-section container">
+    <div class="flex-row">
+        <img src="https://i.imgur.com/QqB7E7S.jpg" alt="Mission">
+        <div>
+            <h2>Our Mission</h2>
+            <p>To empower individuals to express their unique personalities and emotions through beautifully handcrafted keychains. We believe every person has a story to tell, and our mission is to help them share it.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Vision -->
+<section class="container">
+    <div class="flex-row reverse">
+        <img src="https://i.imgur.com/s3tzDgW.jpg" alt="Vision">
+        <div>
+            <h2>Our Vision</h2>
+            <p>To become the leading brand for handmade keychains that inspire self-expression and creativity. We envision a world where everyone feels confident to showcase their individuality through meaningful accessories.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Values -->
+<section class="barrier-section container">
+    <div class="flex-row">
+        <img src="https://i.imgur.com/7D3Cq8p.jpg" alt="Values">
+        <div>
+            <h2>Our Values</h2>
+            <p><strong>Authenticity:</strong> Staying true to our craft and your emotions.<br><br>
+               <strong>Quality:</strong> Every piece is handmade with intense care and high-quality materials to ensure it lasts as your long-term companion.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="team-section">
+    <h2>Meet the Creators</h2>
+    <div class="team-grid">
+        <div class="team-member">
+            <img src="https://i.imgur.com/uXlBzjs.jpg" alt="Kent Loria Reyes">
+            <h4>KENT LORIA REYES</h4>
+            <p>Founder & Lead Artist</p>
+            <p style="font-style: normal; margin-top: 10px; font-size: 0.8rem;">The visionary behind Moodli and the artist behind the cute keychain designs.</p>
+        </div>
+        <div class="team-member">
+            <img src="https://i.imgur.com/pyPCKu2.jpg" alt="Dhymple Norshe Carandang">
+            <h4>DHYMPLE NORSHE CARANDANG</h4>
+            <p>Co-Artist</p>
+            <p style="font-style: normal; margin-top: 10px; font-size: 0.8rem;">The creative partner helping bring every little mood to life through craftsmanship.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Journey -->
+<section class="journey-section">
+    <h2>Join Our Journey</h2>
+    <p>Follow us as we continue to grow and create more little moods for you to wear.</p>
+</section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h3>Moodli</h3>
+            <p>Handmade keychains celebrating self-expression.</p>
+        </div>
+        <div class="footer-col">
+            <h5>Get in Touch</h5>
+            <a href="mailto:moodlicore@gmail.com">moodlicore@gmail.com</a>
+            <p>0936-943-3099</p>
+        </div>
+        <div class="footer-col">
+            <h5>Connect</h5>
+            <a href="https://www.instagram.com/moodlicore/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61581735011163" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/@moodlicore?_r=1&_t=ZS-9323zbw775u" target="_blank">TikTok</a>
+        </div>
+        <div class="footer-col">
+            <h5>Legal</h5>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Transparency</a>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Moodli. All Rights Reserved.</div>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    const spans = hamburger.querySelectorAll('span');
+    spans[0].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(5px, 6px)' : 'none';
+    spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
+    spans[2].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(5px, -6px)' : 'none';
+});
+</script>
+
+</body>
+</html>
